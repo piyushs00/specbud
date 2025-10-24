@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -12,64 +13,59 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-gray-900 px-4 py-12">
-      <div className="w-full max-w-md mx-auto bg-gray-800 rounded-2xl p-8 shadow-xl">
-        <h1 className="text-3xl font-display font-bold text-white mb-6 text-center">Sign Up</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm text-gray-300 mb-1">Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 border border-gray-600 focus:border-accent-blue focus:outline-none"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-300 mb-1">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 border border-gray-600 focus:border-accent-blue focus:outline-none"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-300 mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 border border-gray-600 focus:border-accent-blue focus:outline-none"
-              placeholder="••••••••"
-            />
-          </div>
-          <button type="submit" className="w-full bg-gradient-to-r from-accent-blue to-accent-green text-white px-6 py-3 rounded-lg font-semibold">
-            Create Account
-          </button>
-        </form>
-      </div>
-
-      {/* Newsletter (Stay Ahead with SpecBud) */}
-      <section className="mt-16 bg-gradient-to-r from-dark-blue via-gray-900 to-dark-green rounded-2xl p-8 max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl font-display font-bold text-white mb-4">Stay Ahead with SpecBud</h2>
-        <p className="text-gray-300 mb-6">Get the latest tech news, best deals, and product recommendations in your inbox</p>
-        <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="flex-1 bg-gray-800 text-white rounded-lg px-4 py-3 border border-gray-600 focus:border-accent-blue focus:outline-none"
-          />
-          <button className="bg-gradient-to-r from-accent-blue to-accent-green text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-            Subscribe
-          </button>
+    <div className="min-h-[calc(100vh-80px)] bg-spotify-black flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <Link to="/" className="inline-flex items-center justify-center gap-2">
+            <div className="w-12 h-12 rounded-full bg-spotify-green text-black font-extrabold flex items-center justify-center">SB</div>
+          </Link>
         </div>
-      </section>
+
+        <div className="bg-spotify-gray/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/5">
+          <h1 className="text-3xl md:text-4xl font-semibold text-white text-center mb-6">Sign up to SpecBud</h1>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs uppercase tracking-wider text-gray-400 mb-2">Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="spotify-input"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-wider text-gray-400 mb-2">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="spotify-input"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-wider text-gray-400 mb-2">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="spotify-input"
+                placeholder="••••••••"
+              />
+            </div>
+            <button type="submit" className="spotify-button">Create account</button>
+          </form>
+
+          <div className="mt-6 text-center text-sm text-gray-400">
+            <span>Already have an account? </span>
+            <Link to="/login" className="text-spotify-green hover:underline">Log in</Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

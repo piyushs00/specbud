@@ -20,9 +20,16 @@ module.exports = {
         'accent-green': '#10b981',
         'accent-purple': '#8b5cf6',
         'accent-orange': '#f59e0b',
+        // Spotify brand-inspired palette
+        'spotify-black': '#121212',
+        'spotify-gray': '#181818',
+        'spotify-green': '#1DB954',
+        'spotify-green-hover': '#1ed760',
       },
       fontFamily: {
-        'display': ['Inter', 'system-ui', 'sans-serif'],
+        // Use Poppins (or Circular Std if available) for display
+        'display': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        'poppins': ['Poppins', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
