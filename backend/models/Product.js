@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
   // Basic product information
@@ -220,4 +220,4 @@ productSchema.statics.findByFilters = function(filters) {
   return this.find(query);
 };
 
-module.exports = mongoose.model('Product', productSchema);
+export default mongoose.model('Product', productSchema);

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
-import { useTrendingProducts, useFeaturedProducts, useCategories } from '../hooks/useApi';
+import { useTrendingProducts, useFeaturedProducts, useCategories, useBestDeals, useRecentPriceDrops } from '../hooks/useApi';
+import ProductCard from '../components/ProductCard';
 import ApiTest from '../components/ApiTest';
 
 const Home = () => {
@@ -11,9 +12,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   // API hooks for backend data
-  const { data: trendingData } = useTrendingProducts(4);
-  const { data: featuredData } = useFeaturedProducts(4);
+  const { data: trendingData, loading: trendingLoading } = useTrendingProducts(4);
+  const { data: featuredData, loading: featuredLoading } = useFeaturedProducts(4);
   const { data: categoriesData } = useCategories();
+  const { data: bestDealsData, loading: dealsLoading } = useBestDeals(4, 10);
+  const { data: priceDropsData, loading: dropsLoading } = useRecentPriceDrops(4, 24);
 
   const categories = [
     { id: 'gaming', name: 'Best for Gaming', icon: '🎮', color: 'bg-blue-500', description: 'High-performance gaming laptops and desktops' },
@@ -257,6 +260,160 @@ const Home = () => {
       </section>
 
       {/* Trending Products Section */}
+      <section className="py-20 lg:py-32 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-5xl md:text-6xl font-display font-bold text-white">
+              Trending Products
+            </h2>
+            <Link to="/products" className="text-accent-green text-lg font-medium hover:underline">
+              View All →
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {trendingLoading ? (
+              <div className="col-span-full flex justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-blue"></div>
+              </div>
+            ) : (
+              trendingProducts.map((product) => (
+                <ProductCard key={product._id || product.id} product={product} />
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Live Pricing & Deals Section */}
+      <section className="py-20 lg:py-32 bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Best Deals */}
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white">
+                  🔥 Best Deals
+                </h2>
+                <Link to="/products?sortBy=discountPercentage&sortOrder=desc" className="text-accent-green text-lg font-medium hover:underline">
+                  View All →
+                </Link>
+              </div>
+              
+              <div className="space-y-6">
+                {dealsLoading ? (
+                  <div className="flex justify-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue"></div>
+                  </div>
+                ) : (
+                  bestDealsData?.data?.slice(0, 3).map((product) => (
+                    <div key={product._id || product.id} className="bg-gray-700 rounded-xl p-4 hover:bg-gray-600 transition-colors">
+                      <div className="flex items-center space-x-4">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-16 h-16 object-cover rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <h3 className="text-white font-semibold text-lg">{product.name}</h3>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <span className="text-accent-green text-xl font-bold">
+                              ₹{product.currentPrice?.toLocaleString()}
+                            </span>
+                            <span className="text-gray-400 line-through">
+                              ₹{product.basePrice?.toLocaleString()}
+                            </span>
+                            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">
+                              -{Math.round(((product.basePrice - product.currentPrice) / product.basePrice) * 100)}%
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Recent Price Drops */}
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white">
+                  📉 Price Drops
+                </h2>
+                <Link to="/products?sortBy=lastPriceUpdate&sortOrder=desc" className="text-accent-green text-lg font-medium hover:underline">
+                  View All →
+                </Link>
+              </div>
+              
+              <div className="space-y-6">
+                {dropsLoading ? (
+                  <div className="flex justify-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-blue"></div>
+                  </div>
+                ) : (
+                  priceDropsData?.data?.slice(0, 3).map((product) => (
+                    <div key={product._id || product.id} className="bg-gray-700 rounded-xl p-4 hover:bg-gray-600 transition-colors">
+                      <div className="flex items-center space-x-4">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-16 h-16 object-cover rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <h3 className="text-white font-semibold text-lg">{product.name}</h3>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <span className="text-accent-green text-xl font-bold">
+                              ₹{product.currentPrice?.toLocaleString()}
+                            </span>
+                            <span className="text-gray-400 line-through">
+                              ₹{product.basePrice?.toLocaleString()}
+                            </span>
+                            <span className="text-green-500 text-sm">
+                              ↓ ₹{((product.basePrice - product.currentPrice) || 0).toLocaleString()}
+                            </span>
+                          </div>
+                          <p className="text-gray-400 text-sm mt-1">
+                            Updated {new Date(product.lastPriceUpdate).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="py-20 lg:py-32 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-5xl md:text-6xl font-display font-bold text-white">
+              Featured Products
+            </h2>
+            <Link to="/products?featured=true" className="text-accent-green text-lg font-medium hover:underline">
+              View All →
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredLoading ? (
+              <div className="col-span-full flex justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-blue"></div>
+              </div>
+            ) : (
+              featuredData?.data?.slice(0, 4).map((product) => (
+                <ProductCard key={product._id || product.id} product={product} />
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Original Trending Products Section - keeping for fallback */}
       <section className="py-20 lg:py-32 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">

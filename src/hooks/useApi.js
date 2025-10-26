@@ -23,6 +23,7 @@ export const useApi = (apiCall, dependencies = []) => {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
   const refetch = async () => {
@@ -99,6 +100,41 @@ export const usePopularSearches = (limit = 10) => {
   return useApi(() => apiService.getPopularSearches(limit), [limit]);
 };
 
+export const useCurrentPrices = (productIds) => {
+  return useApi(() => apiService.getCurrentPrices(productIds), [JSON.stringify(productIds)]);
+};
+
 export const useHealth = () => {
   return useApi(() => apiService.getHealth());
+};
+
+// Hook for product comparison
+export const useCompareProducts = (productIds) => {
+  return useApi(() => apiService.compareProducts(productIds), [JSON.stringify(productIds)]);
+};
+
+// Main useApi hook with comparison functionality
+export const useApi = () => {
+  return {
+    // Existing methods
+    getProducts: apiService.getProducts,
+    getProduct: apiService.getProduct,
+    getTrendingProducts: apiService.getTrendingProducts,
+    getFeaturedProducts: apiService.getFeaturedProducts,
+    searchProducts: apiService.searchProducts,
+    getCategories: apiService.getCategories,
+    getCategoryProducts: apiService.getCategoryProducts,
+    getPriceHistory: apiService.getPriceHistory,
+    getPriceTrends: apiService.getPriceTrends,
+    getBestDeals: apiService.getBestDeals,
+    getRecentPriceDrops: apiService.getRecentPriceDrops,
+    comparePrices: apiService.comparePrices,
+    getSearchSuggestions: apiService.getSearchSuggestions,
+    getPopularSearches: apiService.getPopularSearches,
+    getCurrentPrices: apiService.getCurrentPrices,
+    getHealth: apiService.getHealth,
+    
+    // New comparison method
+    compareProducts: apiService.compareProducts
+  };
 };

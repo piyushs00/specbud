@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, logout, isAuthenticated } = useAuth();
   const [search, setSearch] = useState("");
+  const [comparisonCount, setComparisonCount] = useState(0);
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === 'undefined') return true;
     const saved = localStorage.getItem('theme');
@@ -22,6 +25,25 @@ export default function Navbar() {
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
+
+  // Load comparison count from localStorage
+  useEffect(() => {
+    const updateComparisonCount = () => {
+      const saved = localStorage.getItem('comparisonProducts');
+      if (saved) {
+        setComparisonCount(JSON.parse(saved).length);
+      } else {
+        setComparisonCount(0);
+      }
+    };
+
+    updateComparisonCount();
+    
+    // Listen for storage changes
+    window.addEventListener('storage', updateComparisonCount);
+    
+    return () => window.removeEventListener('storage', updateComparisonCount);
+  }, []);
 
   return (
     <nav className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800 shadow-sm">
@@ -64,13 +86,18 @@ export default function Navbar() {
             </Link>
             <Link 
               to="/compare" 
-              className={`text-lg font-medium transition-all duration-300 hover:scale-105 ${
+              className={`text-lg font-medium transition-all duration-300 hover:scale-105 relative ${
                 location.pathname === '/compare' 
                   ? 'text-accent-blue font-semibold' 
                   : 'text-gray-300 hover:text-accent-blue'
               }`}
             >
               Compare
+              {comparisonCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-accent-green text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  {comparisonCount}
+                </span>
+              )}
             </Link>
             <Link 
               to="/deals" 
@@ -144,13 +171,37 @@ export default function Navbar() {
               {isDark ? 'Light' : 'Dark'}
             </button>
             
-            {/* Auth Buttons */}
-            <Link to="/login" className="bg-accent-blue text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">
-              Sign In
-            </Link>
-            <Link to="/signup" className="bg-accent-green text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-green-600 transition-colors duration-300">
-              Sign Up
-            </Link>
+            {/* Auth Buttons or User Profile */}
+            {isAuthenticated() ? (
+              <div className="flex items-center space-x-3">
+                {/* User Profile */}
+                <div className="flex items-center space-x-2 bg-gray-800 rounded-lg px-3 py-2">
+                  <div className="w-8 h-8 bg-gradient-to-r from-accent-blue to-accent-green rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">
+                      {user?.name?.charAt(0)?.toUpperCase() || 'U'}
+                    </span>
+                  </div>
+                  <span className="text-white text-sm font-medium hidden sm:block">
+                    {user?.name || 'User'}
+                  </span>
+                </div>
+                <button
+                  onClick={logout}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-red-700 transition-colors duration-300"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className="bg-accent-blue text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-blue-600 transition-colors duration-300">
+                  Sign In
+                </Link>
+                <Link to="/signup" className="bg-accent-green text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap hover:bg-green-600 transition-colors duration-300">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

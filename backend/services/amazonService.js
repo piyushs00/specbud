@@ -1,6 +1,6 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import puppeteer from 'puppeteer';
 
 class AmazonService {
   constructor() {
@@ -293,4 +293,4 @@ class AmazonService {
   }
 }
 
-module.exports = new AmazonService();
+export default new AmazonService();

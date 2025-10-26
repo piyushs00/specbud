@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import Product from '../models/Product.js';
+
 const router = express.Router();
-const Product = require('../models/Product');
-const amazonService = require('../services/amazonService');
+import amazonService from '../services/amazonService.js';
 
 // Global search across all products
 router.get('/', async (req, res) => {
@@ -485,4 +486,4 @@ async function getSearchSuggestions(query, limit = 10) {
   }
 }
 
-module.exports = router;
+export default router;

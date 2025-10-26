@@ -1,23 +1,59 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const compression = require('compression');
-const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import compression from 'compression';
+import morgan from 'morgan';
+import rateLimit from 'express-rate-limit';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const connectDB = require('./config/database');
-const productRoutes = require('./routes/products');
-const priceRoutes = require('./routes/prices');
-const searchRoutes = require('./routes/search');
-const categoryRoutes = require('./routes/categories');
-const errorHandler = require('./middleware/errorHandler');
-const priceTracker = require('./services/priceTracker');
+// Load environment variables
+dotenv.config();
+
+import productRoutes from './routes/products.js';
+import priceRoutes from './routes/prices.js';
+import searchRoutes from './routes/search.js';
+import categoryRoutes from './routes/categories.js';
+import authRoutes from './routes/auth.js';
+import errorHandler from './middleware/errorHandler.js';
+import priceTracker from './services/priceTracker.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
+// Connect to MongoDB Atlas
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log('✅ MongoDB connected successfully');
+    console.log(`📦 MongoDB Connected: ${conn.connection.host}`);
+    
+    // Handle connection events
+    mongoose.connection.on('error', (err) => {
+      console.error('❌ MongoDB connection error:', err);
+    });
+
+    mongoose.connection.on('disconnected', () => {
+      console.log('MongoDB disconnected');
+    });
+
+    // Graceful shutdown
+    process.on('SIGINT', async () => {
+      await mongoose.connection.close();
+      console.log('MongoDB connection closed through app termination');
+      process.exit(0);
+    });
+
+  } catch (error) {
+    console.error('❌ MongoDB connection error:', error.message);
+    process.exit(1);
+  }
+};
+
 connectDB();
 
 // Security middleware
@@ -56,7 +92,17 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Sample route to confirm MongoDB connection
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: '🚀 SpecBud Backend API is running!',
+    mongodb: mongoose.connection.readyState === 1 ? '✅ Connected' : '❌ Disconnected',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // API routes
+app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/prices', priceRoutes);
 app.use('/api/search', searchRoutes);
@@ -95,4 +141,4 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
-module.exports = app;
+export default app;

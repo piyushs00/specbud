@@ -1,7 +1,7 @@
-const cron = require('node-cron');
-const Product = require('../models/Product');
-const PriceHistory = require('../models/PriceHistory');
-const amazonService = require('./amazonService');
+import cron from 'node-cron';
+import Product from '../models/Product.js';
+import PriceHistory from '../models/PriceHistory.js';
+import amazonService from './amazonService.js';
 
 class PriceTracker {
   constructor() {
@@ -302,4 +302,4 @@ class PriceTracker {
   }
 }
 
-module.exports = new PriceTracker();
+export default new PriceTracker();

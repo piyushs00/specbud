@@ -4,7 +4,6 @@
 const amazonProducts = [
   // LAPTOPS
   {
-    id: 1,
     type: "laptops",
     category: "premium",
     name: "MacBook Air M2 13-inch",
@@ -49,7 +48,6 @@ const amazonProducts = [
     amazonASIN: "B0B3C2Q5XK"
   },
   {
-    id: 2,
     type: "laptops",
     category: "premium",
     name: "Dell XPS 13 Plus",
@@ -93,7 +91,6 @@ const amazonProducts = [
     amazonASIN: "B09X7N8Q2K"
   },
   {
-    id: 3,
     type: "laptops",
     category: "gaming",
     name: "ASUS ROG Strix G15",
@@ -137,7 +134,6 @@ const amazonProducts = [
     amazonASIN: "B09X7N8Q3L"
   },
   {
-    id: 4,
     type: "laptops",
     category: "budget",
     name: "HP Pavilion 15",
@@ -181,7 +177,6 @@ const amazonProducts = [
     amazonASIN: "B09X7N8Q4M"
   },
   {
-    id: 5,
     type: "laptops",
     category: "gaming",
     name: "MSI Gaming GF63",
@@ -227,7 +222,6 @@ const amazonProducts = [
 
   // PHONES
   {
-    id: 6,
     type: "phones",
     category: "premium",
     name: "iPhone 14 Pro",
@@ -272,7 +266,6 @@ const amazonProducts = [
     amazonASIN: "B0BDJ7J9Z8"
   },
   {
-    id: 7,
     type: "phones",
     category: "premium",
     name: "Samsung Galaxy S23 Ultra",
@@ -316,7 +309,6 @@ const amazonProducts = [
     amazonASIN: "B0BSHFGDL3"
   },
   {
-    id: 8,
     type: "phones",
     category: "budget",
     name: "OnePlus 11",
@@ -360,7 +352,6 @@ const amazonProducts = [
     amazonASIN: "B0BSHFGDL4"
   },
   {
-    id: 9,
     type: "phones",
     category: "budget",
     name: "Xiaomi Redmi Note 12 Pro",
@@ -404,7 +395,6 @@ const amazonProducts = [
     amazonASIN: "B0BSHFGDL5"
   },
   {
-    id: 10,
     type: "phones",
     category: "premium",
     name: "Google Pixel 7 Pro",
@@ -446,7 +436,443 @@ const amazonProducts = [
     trending: false,
     status: "active",
     amazonASIN: "B0BSHFGDL6"
+  },
+
+  // EARPHONES
+  {
+    type: "earphones",
+    category: "premium",
+    name: "AirPods Pro 2nd Gen",
+    shortDesc: "Active noise cancellation with spatial audio",
+    brand: "Apple",
+    model: "AirPods Pro 2",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=400&fit=crop",
+    basePrice: 24900,
+    currentPrice: 22900,
+    currency: "INR",
+    specs: {
+      processor: "H2 chip",
+      graphics: "N/A",
+      display: "N/A",
+      storage: "N/A",
+      ram: "N/A",
+      battery: "Up to 6 hours (30 hours with case)",
+      weight: "5.3g per earbud",
+      dimensions: "45.2 x 60.9 x 21.7 mm (case)",
+      connectivity: ["Bluetooth 5.3", "MagSafe", "Qi wireless charging"],
+      ports: ["Lightning", "Wireless charging"]
+    },
+    launched: "September 2022",
+    investment: "Premium wireless earbuds with excellent noise cancellation and sound quality. Perfect for Apple ecosystem users who want the best audio experience.",
+    useCase: ["casual", "office", "fitness"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B0BDJ7J9Z9", price: 22900, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 22900, availability: "in_stock" },
+      { site: "Apple Store", url: "https://apple.com", price: 22900, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=airpods-pro-2-review"
+    ],
+    rating: 4.5,
+    reviewCount: 2800,
+    tags: ["airpods", "apple", "wireless earbuds", "noise cancellation", "premium"],
+    searchKeywords: ["airpods pro", "apple earbuds", "wireless headphones", "noise cancellation", "premium earbuds"],
+    featured: true,
+    trending: true,
+    status: "active",
+    amazonASIN: "B0BDJ7J9Z9"
+  },
+  {
+    type: "earphones",
+    category: "premium",
+    name: "Sony WF-1000XM4",
+    shortDesc: "Industry-leading noise cancellation with LDAC",
+    brand: "Sony",
+    model: "WF-1000XM4",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=400&fit=crop",
+    basePrice: 19990,
+    currentPrice: 17990,
+    currency: "INR",
+    specs: {
+      processor: "Sony V1 processor",
+      graphics: "N/A",
+      display: "N/A",
+      storage: "N/A",
+      ram: "N/A",
+      battery: "Up to 8 hours (24 hours with case)",
+      weight: "7.3g per earbud",
+      dimensions: "46.2 x 60.9 x 24.2 mm (case)",
+      connectivity: ["Bluetooth 5.2", "LDAC", "AAC", "SBC"],
+      ports: ["USB-C", "Wireless charging"]
+    },
+    launched: "June 2021",
+    investment: "Excellent noise cancellation and sound quality. Great for audiophiles who want premium audio experience. LDAC support provides high-quality audio streaming.",
+    useCase: ["casual", "office", "fitness"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q6O", price: 17990, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 17990, availability: "in_stock" },
+      { site: "Sony Store", url: "https://sony.com", price: 17990, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=sony-wf1000xm4-review"
+    ],
+    rating: 4.4,
+    reviewCount: 1950,
+    tags: ["sony", "wireless earbuds", "noise cancellation", "ldac", "premium"],
+    searchKeywords: ["sony wf1000xm4", "wireless earbuds", "noise cancellation", "ldac", "premium earbuds"],
+    featured: true,
+    trending: false,
+    status: "active",
+    amazonASIN: "B09X7N8Q6O"
+  },
+  {
+    type: "earphones",
+    category: "budget",
+    name: "OnePlus Buds Pro",
+    shortDesc: "Active noise cancellation at budget price",
+    brand: "OnePlus",
+    model: "Buds Pro",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=400&fit=crop",
+    basePrice: 9999,
+    currentPrice: 8999,
+    currency: "INR",
+    specs: {
+      processor: "OnePlus audio chip",
+      graphics: "N/A",
+      display: "N/A",
+      storage: "N/A",
+      ram: "N/A",
+      battery: "Up to 7 hours (28 hours with case)",
+      weight: "4.4g per earbud",
+      dimensions: "45.2 x 60.9 x 21.7 mm (case)",
+      connectivity: ["Bluetooth 5.2", "AAC", "SBC"],
+      ports: ["USB-C", "Wireless charging"]
+    },
+    launched: "July 2021",
+    investment: "Great value for money with active noise cancellation. Good sound quality and battery life. Perfect for OnePlus users who want premium features at budget price.",
+    useCase: ["casual", "office", "fitness"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q7P", price: 8999, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 8999, availability: "in_stock" },
+      { site: "OnePlus Store", url: "https://oneplus.com", price: 8999, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=oneplus-buds-pro-review"
+    ],
+    rating: 4.2,
+    reviewCount: 1650,
+    tags: ["oneplus", "wireless earbuds", "budget", "noise cancellation", "value"],
+    searchKeywords: ["oneplus buds pro", "wireless earbuds", "budget earbuds", "noise cancellation", "value earbuds"],
+    featured: false,
+    trending: true,
+    status: "active",
+    amazonASIN: "B09X7N8Q7P"
+  },
+  {
+    type: "earphones",
+    category: "budget",
+    name: "Realme Buds Air 3",
+    shortDesc: "Budget-friendly with good sound quality",
+    brand: "Realme",
+    model: "Buds Air 3",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=400&fit=crop",
+    basePrice: 3999,
+    currentPrice: 3499,
+    currency: "INR",
+    specs: {
+      processor: "Realme audio chip",
+      graphics: "N/A",
+      display: "N/A",
+      storage: "N/A",
+      ram: "N/A",
+      battery: "Up to 6 hours (25 hours with case)",
+      weight: "4.2g per earbud",
+      dimensions: "45.2 x 60.9 x 21.7 mm (case)",
+      connectivity: ["Bluetooth 5.2", "AAC", "SBC"],
+      ports: ["USB-C"]
+    },
+    launched: "March 2022",
+    investment: "Excellent budget option with decent sound quality and battery life. Great for students and casual users who want wireless earbuds without breaking the bank.",
+    useCase: ["casual", "fitness"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q8Q", price: 3499, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 3499, availability: "in_stock" },
+      { site: "Realme Store", url: "https://realme.com", price: 3499, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=realme-buds-air-3-review"
+    ],
+    rating: 4.1,
+    reviewCount: 3200,
+    tags: ["realme", "wireless earbuds", "budget", "value", "student"],
+    searchKeywords: ["realme buds air 3", "budget earbuds", "wireless earbuds", "student earbuds", "value earbuds"],
+    featured: false,
+    trending: false,
+    status: "active",
+    amazonASIN: "B09X7N8Q8Q"
+  },
+  {
+    type: "earphones",
+    category: "premium",
+    name: "Bose QuietComfort Earbuds",
+    shortDesc: "Superior noise cancellation and comfort",
+    brand: "Bose",
+    model: "QuietComfort Earbuds",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=400&fit=crop",
+    basePrice: 27990,
+    currentPrice: 24990,
+    currency: "INR",
+    specs: {
+      processor: "Bose audio chip",
+      graphics: "N/A",
+      display: "N/A",
+      storage: "N/A",
+      ram: "N/A",
+      battery: "Up to 6 hours (18 hours with case)",
+      weight: "8.5g per earbud",
+      dimensions: "45.2 x 60.9 x 21.7 mm (case)",
+      connectivity: ["Bluetooth 5.1", "AAC", "SBC"],
+      ports: ["USB-C", "Wireless charging"]
+    },
+    launched: "September 2020",
+    investment: "Industry-leading noise cancellation with excellent comfort. Perfect for frequent travelers and professionals who need superior noise isolation.",
+    useCase: ["office", "travel", "casual"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q9R", price: 24990, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 24990, availability: "in_stock" },
+      { site: "Bose Store", url: "https://bose.com", price: 24990, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=bose-quietcomfort-earbuds-review"
+    ],
+    rating: 4.3,
+    reviewCount: 1200,
+    tags: ["bose", "wireless earbuds", "noise cancellation", "premium", "comfort"],
+    searchKeywords: ["bose quietcomfort", "wireless earbuds", "noise cancellation", "premium earbuds", "bose"],
+    featured: false,
+    trending: false,
+    status: "active",
+    amazonASIN: "B09X7N8Q9R"
+  },
+
+  // ADDITIONAL LAPTOPS
+  {
+    type: "laptops",
+    category: "gaming",
+    name: "Lenovo Legion 5 Pro",
+    shortDesc: "High-performance gaming laptop with RTX 3070",
+    brand: "Lenovo",
+    model: "Legion 5 Pro",
+    image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&h=400&fit=crop",
+    basePrice: 129900,
+    currentPrice: 119900,
+    currency: "INR",
+    specs: {
+      processor: "AMD Ryzen 7 5800H",
+      graphics: "NVIDIA GeForce RTX 3070 (8GB)",
+      display: "16\" WQXGA 165Hz (2560 x 1600)",
+      storage: "1TB SSD",
+      ram: "16GB DDR4",
+      battery: "Up to 8 hours",
+      weight: "2.45 kg",
+      dimensions: "35.6 x 26.4 x 2.6 cm",
+      connectivity: ["Wi-Fi 6", "Bluetooth 5.1", "Ethernet"],
+      ports: ["4x USB-A", "2x USB-C", "HDMI", "Ethernet", "3.5mm audio"]
+    },
+    launched: "May 2021",
+    investment: "Excellent gaming performance with RTX 3070. Great for both gaming and content creation. The 16-inch display provides immersive gaming experience.",
+    useCase: ["gaming", "creative"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q0S", price: 119900, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 119900, availability: "in_stock" },
+      { site: "Lenovo Store", url: "https://lenovo.com", price: 119900, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=lenovo-legion-5-pro-review"
+    ],
+    rating: 4.5,
+    reviewCount: 1800,
+    tags: ["gaming laptop", "lenovo", "legion", "rtx 3070", "gaming", "amd"],
+    searchKeywords: ["lenovo legion 5 pro", "gaming laptop", "rtx 3070", "gaming pc", "amd ryzen"],
+    featured: true,
+    trending: true,
+    status: "active",
+    amazonASIN: "B09X7N8Q0S"
+  },
+  {
+    type: "laptops",
+    category: "office",
+    name: "Microsoft Surface Laptop 5",
+    shortDesc: "Premium Windows laptop with touchscreen",
+    brand: "Microsoft",
+    model: "Surface Laptop 5",
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=400&fit=crop",
+    basePrice: 89990,
+    currentPrice: 84990,
+    currency: "INR",
+    specs: {
+      processor: "Intel Core i7-1255U (12th Gen)",
+      graphics: "Intel Iris Xe Graphics",
+      display: "13.5\" PixelSense Touch (2256 x 1504)",
+      storage: "512GB SSD",
+      ram: "16GB LPDDR5",
+      battery: "Up to 18 hours",
+      weight: "1.27 kg",
+      dimensions: "30.8 x 22.3 x 1.45 cm",
+      connectivity: ["Wi-Fi 6", "Bluetooth 5.1"],
+      ports: ["1x USB-A", "1x USB-C", "Surface Connect"]
+    },
+    launched: "October 2022",
+    investment: "Premium Windows laptop with excellent build quality and touchscreen. Perfect for business professionals and creative users who want a premium Windows experience.",
+    useCase: ["office", "creative"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q1T", price: 84990, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 84990, availability: "in_stock" },
+      { site: "Microsoft Store", url: "https://microsoft.com", price: 84990, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=surface-laptop-5-review"
+    ],
+    rating: 4.4,
+    reviewCount: 950,
+    tags: ["surface laptop", "microsoft", "windows laptop", "touchscreen", "premium"],
+    searchKeywords: ["surface laptop 5", "microsoft laptop", "windows laptop", "touchscreen laptop", "premium laptop"],
+    featured: true,
+    trending: false,
+    status: "active",
+    amazonASIN: "B09X7N8Q1T"
+  },
+
+  // ADDITIONAL PHONES
+  {
+    type: "phones",
+    category: "budget",
+    name: "Samsung Galaxy A54 5G",
+    shortDesc: "Mid-range smartphone with excellent camera",
+    brand: "Samsung",
+    model: "Galaxy A54 5G",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+    basePrice: 38999,
+    currentPrice: 34999,
+    currency: "INR",
+    specs: {
+      processor: "Exynos 1380",
+      graphics: "Mali-G68 MP5",
+      display: "6.4\" Super AMOLED (2340 x 1080)",
+      storage: "128GB",
+      ram: "8GB",
+      battery: "Up to 2 days",
+      weight: "202g",
+      dimensions: "15.8 x 7.6 x 0.82 cm",
+      connectivity: ["5G", "Wi-Fi 6", "Bluetooth 5.3", "NFC"],
+      ports: ["USB-C", "Wireless charging"]
+    },
+    launched: "March 2023",
+    investment: "Great mid-range smartphone with excellent camera performance and battery life. Perfect for users who want flagship features at a reasonable price.",
+    useCase: ["casual", "office"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q2U", price: 34999, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 34999, availability: "in_stock" },
+      { site: "Samsung Store", url: "https://samsung.com", price: 34999, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=galaxy-a54-review"
+    ],
+    rating: 4.3,
+    reviewCount: 2100,
+    tags: ["samsung", "galaxy a54", "mid-range", "camera phone", "5g"],
+    searchKeywords: ["samsung galaxy a54", "mid-range phone", "camera phone", "5g phone", "galaxy a series"],
+    featured: false,
+    trending: true,
+    status: "active",
+    amazonASIN: "B09X7N8Q2U"
+  },
+  {
+    type: "phones",
+    category: "budget",
+    name: "Nothing Phone (2)",
+    shortDesc: "Unique design with transparent back and LED lights",
+    brand: "Nothing",
+    model: "Phone (2)",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=400&fit=crop",
+    basePrice: 44999,
+    currentPrice: 41999,
+    currency: "INR",
+    specs: {
+      processor: "Snapdragon 8+ Gen 1",
+      graphics: "Adreno 730",
+      display: "6.7\" LTPO OLED (2412 x 1080)",
+      storage: "128GB",
+      ram: "8GB",
+      battery: "Up to 1.5 days",
+      weight: "193.5g",
+      dimensions: "16.2 x 7.6 x 0.85 cm",
+      connectivity: ["5G", "Wi-Fi 6", "Bluetooth 5.3", "NFC"],
+      ports: ["USB-C", "Wireless charging"]
+    },
+    launched: "July 2023",
+    investment: "Unique design with transparent back and LED notification system. Great performance with clean Android experience. Perfect for users who want something different.",
+    useCase: ["casual", "office"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q3V", price: 41999, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 41999, availability: "in_stock" },
+      { site: "Nothing Store", url: "https://nothing.tech", price: 41999, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=nothing-phone-2-review"
+    ],
+    rating: 4.2,
+    reviewCount: 1500,
+    tags: ["nothing", "phone 2", "unique design", "transparent", "led"],
+    searchKeywords: ["nothing phone 2", "unique phone", "transparent phone", "led phone", "nothing"],
+    featured: false,
+    trending: true,
+    status: "active",
+    amazonASIN: "B09X7N8Q3V"
+  },
+  {
+    type: "phones",
+    category: "premium",
+    name: "iPhone 13",
+    shortDesc: "Reliable iPhone with A15 Bionic chip",
+    brand: "Apple",
+    model: "iPhone 13",
+    image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=400&fit=crop",
+    basePrice: 69900,
+    currentPrice: 64900,
+    currency: "INR",
+    specs: {
+      processor: "A15 Bionic (6-core CPU)",
+      graphics: "4-core GPU",
+      display: "6.1\" Super Retina XDR (2532 x 1170)",
+      storage: "128GB",
+      ram: "4GB",
+      battery: "Up to 19 hours video playback",
+      weight: "174g",
+      dimensions: "14.67 x 7.15 x 0.76 cm",
+      connectivity: ["5G", "Wi-Fi 6", "Bluetooth 5.0", "NFC"],
+      ports: ["Lightning", "Wireless charging"]
+    },
+    launched: "September 2021",
+    investment: "Reliable iPhone with excellent performance and camera. Great value for money compared to newer models. Perfect for users who want iPhone experience without the latest price tag.",
+    useCase: ["casual", "office"],
+    buyLinks: [
+      { site: "Amazon", url: "https://amazon.in/dp/B09X7N8Q4W", price: 64900, availability: "in_stock" },
+      { site: "Flipkart", url: "https://flipkart.com", price: 64900, availability: "in_stock" },
+      { site: "Apple Store", url: "https://apple.com", price: 64900, availability: "in_stock" }
+    ],
+    youtubeReviews: [
+      "https://youtube.com/watch?v=iphone-13-review"
+    ],
+    rating: 4.5,
+    reviewCount: 4500,
+    tags: ["iphone", "apple", "a15 bionic", "reliable", "value"],
+    searchKeywords: ["iphone 13", "apple phone", "a15 bionic", "reliable phone", "value iphone"],
+    featured: false,
+    trending: false,
+    status: "active",
+    amazonASIN: "B09X7N8Q4W"
   }
 ];
 
-module.exports = amazonProducts;
+export default amazonProducts;

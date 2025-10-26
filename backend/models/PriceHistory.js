@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const priceHistorySchema = new mongoose.Schema({
   productId: {
@@ -113,4 +113,4 @@ priceHistorySchema.statics.getPriceStats = async function(productId, days = 30) 
   ]);
 };
 
-module.exports = mongoose.model('PriceHistory', priceHistorySchema);
+export default mongoose.model('PriceHistory', priceHistorySchema);

@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import Product from '../models/Product.js';
+import PriceHistory from '../models/PriceHistory.js';
+import amazonService from '../services/amazonService.js';
+import priceTracker from '../services/priceTracker.js';
+
 const router = express.Router();
-const Product = require('../models/Product');
-const PriceHistory = require('../models/PriceHistory');
-const amazonService = require('../services/amazonService');
-const priceTracker = require('../services/priceTracker');
 
 // Get all products with filtering and pagination
 router.get('/', async (req, res) => {
@@ -59,8 +60,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find(filters)
       .sort(sort)
       .skip(skip)
-      .limit(parseInt(limit))
-      .populate('priceHistory');
+      .limit(parseInt(limit));
 
     const total = await Product.countDocuments(filters);
 
@@ -410,4 +410,4 @@ router.post('/compare', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

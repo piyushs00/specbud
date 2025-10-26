@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
-const Product = require('../models/Product');
-const PriceHistory = require('../models/PriceHistory');
-const amazonProducts = require('../data/amazonProducts');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import Product from '../models/Product.js';
+import PriceHistory from '../models/PriceHistory.js';
+import amazonProducts from '../data/amazonProducts.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Connect to MongoDB and seed database
 async function seedDatabase() {

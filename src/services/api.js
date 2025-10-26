@@ -121,6 +121,13 @@ class ApiService {
     return this.fetchData(`/prices/compare/${productId}`);
   }
 
+  async compareProducts(productIds) {
+    return this.fetchData('/products/compare', {
+      method: 'POST',
+      body: JSON.stringify({ productIds }),
+    });
+  }
+
   async getPriceStats(productId, days = 30) {
     return this.fetchData(`/prices/stats/${productId}?days=${days}`);
   }

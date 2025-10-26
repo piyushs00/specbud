@@ -1,9 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const compression = require('compression');
-const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import compression from 'compression';
+import morgan from 'morgan';
+import rateLimit from 'express-rate-limit';
+import amazonProducts from './data/amazonProducts.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -45,11 +46,6 @@ app.get('/health', (req, res) => {
     message: 'SpecBud Backend is running!'
   });
 });
-
-// Import comprehensive Amazon product database
-const amazonProducts = require('./data/amazonProducts');
-
-// Sample products data (from your frontend) - fallback data
 const sampleProducts = [
   {
     id: 1,
@@ -349,6 +345,35 @@ app.get('/api/categories', (req, res) => {
   res.json({
     success: true,
     data: categories
+  });
+});
+
+// Compare products endpoint
+app.post('/api/products/compare', (req, res) => {
+  const { productIds } = req.body;
+
+  if (!productIds || !Array.isArray(productIds) || productIds.length < 2) {
+    return res.status(400).json({
+      success: false,
+      error: 'At least 2 product IDs are required for comparison'
+    });
+  }
+
+  const products = amazonProducts.filter(p => productIds.includes(p.id));
+
+  if (products.length !== productIds.length) {
+    return res.status(404).json({
+      success: false,
+      error: 'One or more products not found'
+    });
+  }
+
+  res.json({
+    success: true,
+    data: {
+      products,
+      priceHistories: {} // Empty for now since we don't have price history in simple server
+    }
   });
 });
 

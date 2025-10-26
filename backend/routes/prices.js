@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import Product from '../models/Product.js';
+import PriceHistory from '../models/PriceHistory.js';
+
 const router = express.Router();
-const Product = require('../models/Product');
-const PriceHistory = require('../models/PriceHistory');
-const amazonService = require('../services/amazonService');
-const priceTracker = require('../services/priceTracker');
+import amazonService from '../services/amazonService.js';
+import priceTracker from '../services/priceTracker.js';
 
 // Get current prices for multiple products
 router.get('/current', async (req, res) => {
@@ -325,7 +326,7 @@ router.get('/deals/best', async (req, res) => {
 
     const products = await Product.find({
       status: 'active',
-      currentPrice: { $lt: { $field: 'basePrice' } }
+      $expr: { $lt: ['$currentPrice', '$basePrice'] }
     })
     .sort({ discountPercentage: -1 })
     .limit(parseInt(limit));
@@ -419,4 +420,4 @@ router.get('/drops/recent', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
