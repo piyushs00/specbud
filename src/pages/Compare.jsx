@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useApi } from '../hooks/useApi';
+import { useApiService } from '../hooks/useApi';
 
 const Compare = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +9,7 @@ const Compare = () => {
   const [error, setError] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { compareProducts } = useApi();
+  const { compareProducts } = useApiService();
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
